@@ -33,7 +33,6 @@ jobs:
            node-version: 8
        - run: npm install
        - run: npm run build 
-       - run: cp CHANGELOG.md src/plugins/woocommerce-malgapayments/CHANGELOG.md
        - run: cd src/plugins/ && zip -r ../../woocommerce-malga-payments.zip woocommerce-malga-payments
        - uses: actions/upload-artifact@v1
          with:
