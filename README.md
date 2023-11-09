@@ -1,6 +1,6 @@
 # Malga Pagamentos for WooCommerce #
-**Contributors:** MalgaTeam, Morais Junior
 
+**Contributors:** MalgaTeam, Morais Junior
 **Tags:** woocommerce, malga, gateway, payment  
 **Requires at least:** 5.6  
 **Tested up to:** 5.8.3  
