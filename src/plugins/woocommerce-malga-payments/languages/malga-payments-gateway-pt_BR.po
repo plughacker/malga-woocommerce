@@ -1,0 +1,479 @@
+# Copyright (C) 2019 Malga Pameyments
+# This file is distributed under the GPLv3 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: malga-payments-gateway\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce-"
+"pagseguro\n"
+"POT-Creation-Date: 2023-11-07 09:53-0300\n"
+"PO-Revision-Date: 2023-11-07 09:54-0300\n"
+"Last-Translator: \n"
+"Language-Team: pt_BR <LL@li.org>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.4.1\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: templates\n"
+"X-Poedit-SearchPath-1: includes\n"
+"X-Poedit-SearchPath-2: woocommerce-malga-payments.php\n"
+
+#: includes/class-wc-malga-api.php:22 includes/class-wc-malga-gateway.php:8
+msgid "Malga"
+msgstr ""
+
+#: includes/class-wc-malga-api.php:22
+msgid "Please, select a payment method."
+msgstr "Por favor, selecione um método de pagamento."
+
+#: includes/class-wc-malga-gateway.php:9
+msgid ""
+"Accept payments by credit card, bank debit or banking ticket using the Malga "
+"Payments."
+msgstr ""
+"Aceite pagamentos por cartão de crédito, débito ou boleto bancário usando a "
+"Malga pagamentos."
+
+#: includes/class-wc-malga-gateway.php:10
+msgid "Pay"
+msgstr "Pagar"
+
+#: includes/class-wc-malga-gateway.php:50
+msgid "Title"
+msgstr "Título"
+
+#: includes/class-wc-malga-gateway.php:52
+msgid "This controls the title which the user sees during checkout."
+msgstr "Isso controla o título que o usuário vê durante o checkout."
+
+#: includes/class-wc-malga-gateway.php:54
+msgid "MalgaPayments"
+msgstr "Malga Pagamentos"
+
+#: includes/class-wc-malga-gateway.php:57
+msgid "Description"
+msgstr "Descrição"
+
+#: includes/class-wc-malga-gateway.php:59
+msgid "This controls the description which the user sees during checkout."
+msgstr "Isso controla a descrição que o usuário vê durante o checkout."
+
+#: includes/class-wc-malga-gateway.php:60
+msgid "Pay via Malga"
+msgstr "Pagamento via Malga"
+
+#: includes/class-wc-malga-gateway.php:63
+msgid "Minimum value of the installment"
+msgstr "Valor mínimo da parcela"
+
+#: includes/class-wc-malga-gateway.php:65
+msgid "Please enter your minimum value of the installment"
+msgstr "Informe o valor mínimo da parcela"
+
+#: includes/class-wc-malga-gateway.php:69
+msgid "Maximum number of installments"
+msgstr "Quantidade máxima de parcelas"
+
+#: includes/class-wc-malga-gateway.php:71
+msgid "Enter the maximum number of installments"
+msgstr "Informe o número máximo de parcelas"
+
+#: includes/class-wc-malga-gateway.php:75
+msgid "Debuger"
+msgstr ""
+
+#: includes/class-wc-malga-gateway.php:77
+msgid "Enable debuger"
+msgstr ""
+
+#: includes/class-wc-malga-gateway.php:80
+msgid "Debuger can be used to test the payments."
+msgstr "Debuger pode ser usado para testar os pagamentos."
+
+#: includes/class-wc-malga-gateway.php:83
+msgid "FraudAnalysis"
+msgstr "FraudAnalysis"
+
+#: includes/class-wc-malga-gateway.php:85
+msgid "Use Fraudanalysis"
+msgstr "Utilizar FraudAnalysis"
+
+#: includes/class-wc-malga-gateway.php:88
+msgid "fraudAnalysis can be used otimize payments."
+msgstr "fraudAnalysis pode ser usado se estiver habilitado no gateway."
+
+#: includes/class-wc-malga-gateway.php:91
+msgid "Integration"
+msgstr "Integração"
+
+#: includes/class-wc-malga-gateway.php:96
+msgid "X-Client-Id"
+msgstr ""
+
+#: includes/class-wc-malga-gateway.php:98
+msgid "Please enter your X-Client-Id. This is needed in order to take payment."
+msgstr ""
+"Por favor, insira seu X-Client-Id. Isso é necessário para receber o "
+"pagamento."
+
+#: includes/class-wc-malga-gateway.php:103
+msgid "X-Api-Key"
+msgstr ""
+
+#: includes/class-wc-malga-gateway.php:105
+msgid "Please enter your X-Api-Key. This is needed in order to take payment."
+msgstr ""
+"Por favor, insira seu X-Api-Key. Isso é necessário para receber o pagamento."
+
+#: includes/class-wc-malga-gateway.php:110
+#: includes/class-wc-malga-gateway.php:125
+msgid "MerchantId"
+msgstr ""
+
+#: includes/class-wc-malga-gateway.php:112
+msgid "Please enter your MerchantId. This is needed in order to take payment."
+msgstr ""
+"Por favor, insira seu MerchantId. Isso é necessário para receber o pagamento."
+
+#: includes/class-wc-malga-gateway.php:117
+msgid "Sandbox"
+msgstr ""
+
+#: includes/class-wc-malga-gateway.php:119
+msgid "Enable Malga Sandbox"
+msgstr "Habilitar Malga Sandbox"
+
+#: includes/class-wc-malga-gateway.php:122
+msgid "Malga Sandbox can be used to test the payments."
+msgstr "Malga Sandbox pode ser usado para testar os pagamentos."
+
+#: includes/class-wc-malga-gateway.php:127
+msgid ""
+"Please enter your Malga email address. This is needed in order to take "
+"payment."
+msgstr ""
+"Por favor, insira seu endereço de e-mail do Malga. Isso é necessário para "
+"receber o pagamento."
+
+#: includes/class-wc-malga-gateway.php:132
+msgid "Sandbox MerchantId"
+msgstr "Sandbox MerchantId"
+
+#: includes/class-wc-malga-gateway.php:134
+msgid "Please enter your Malga sandbox merchantId"
+msgstr "Por favor, insira seu Malga sandbox merchantId"
+
+#: includes/class-wc-malga-gateway.php:138
+msgid "Integration Behavior"
+msgstr "Comportamento de Integração"
+
+#: includes/class-wc-malga-gateway.php:143
+msgid "Statement descriptor"
+msgstr "Identificação da loja"
+
+#: includes/class-wc-malga-gateway.php:145
+msgid "Please enter a statement descriptor."
+msgstr ""
+"Essa identificação aparecerá na fatura do cartão do seu cliente (statement "
+"descriptor)."
+
+#: includes/class-wc-malga-gateway.php:149
+msgid "Webhook Secret"
+msgstr "Chave de acesso para validar o Webhook"
+
+#: includes/class-wc-malga-gateway.php:151
+#, php-format
+msgid "Please enter a Webhook Secret, use: %s"
+msgstr ""
+"Insira uma chave de acesso para o Webhook, pode ser um valor aleatório que "
+"só você conhece, depois cadastre o webhook para a seguinte url: %s"
+
+#: includes/class-wc-malga-gateway.php:155
+msgid "Currency"
+msgstr ""
+
+#: includes/class-wc-malga-gateway.php:157
+msgid "Currency identifier for billing processing, ISO 4217 format"
+msgstr ""
+
+#: includes/class-wc-malga-gateway.php:161
+msgid "Transparent Checkout Options"
+msgstr "Opções de check-out transparente"
+
+#: includes/class-wc-malga-gateway.php:177
+msgid "Please enter your title of payment type"
+msgstr "Informe o titulo do meio de pagamento"
+
+#: includes/class-wc-malga-gateway.php:183
+msgid "Percent of discount"
+msgstr "Percentual de desconto"
+
+#: includes/class-wc-malga-gateway.php:301
+#: includes/class-wc-malga-gateway.php:302
+msgid "Malga: Payment approved."
+msgstr "Malga: Pagamento aprovado."
+
+#: includes/class-wc-malga-gateway.php:306
+msgid "Malga: Payment is pre-authorized"
+msgstr "Malga: O pagamento é pré-autorizado"
+
+#: includes/class-wc-malga-gateway.php:309
+msgid "Malga: Payment is pending"
+msgstr "Malga: O pagamento está pendente"
+
+#: includes/class-wc-malga-gateway.php:312
+msgid "Malga: Payment is failed"
+msgstr "Malga: O pagamento falhou"
+
+#: includes/class-wc-malga-gateway.php:315
+msgid "Malga: Payment is canceled"
+msgstr "Malga: Pagamento cancelado"
+
+#: includes/class-wc-malga-gateway.php:318
+msgid "Malga: Payment refunded"
+msgstr "Malga: Pagamento reembolsado"
+
+#: includes/class-wc-malga-gateway.php:322
+msgid "Malga: Payment came into dispute."
+msgstr "Malga: O pagamento entrou em disputa."
+
+#: includes/class-wc-malga-gateway.php:353
+msgid " discount"
+msgstr " desconto"
+
+#: includes/class-wc-malga-gateway.php:416
+msgid "Internal error :("
+msgstr "Erro interno :("
+
+#: includes/configs/boleto.php:3
+msgid "Expires days"
+msgstr "Dias para expiração"
+
+#: includes/configs/boleto.php:6
+msgid "Enter the number of days for the boleto to expire"
+msgstr "Insira o número de dias para o boleto expirar"
+
+#: includes/configs/boleto.php:11
+msgid "Instructions"
+msgstr "Instruções"
+
+#: includes/configs/boleto.php:13
+msgid "Please enter your instructions for Boleto"
+msgstr "Por favor, insira suas instruções para o Boleto"
+
+#: includes/configs/boleto.php:19
+msgid "Interest"
+msgstr "Juros"
+
+#: includes/configs/boleto.php:21
+msgid "Enter the format to interest"
+msgstr "Insira o formato de juros"
+
+#: includes/configs/boleto.php:23 includes/configs/boleto.php:44
+msgid "Amount"
+msgstr "Valor"
+
+#: includes/configs/boleto.php:24 includes/configs/boleto.php:45
+msgid "Percentage"
+msgstr "Percentual"
+
+#: includes/configs/boleto.php:29
+msgid "Enter value for interest"
+msgstr "Insira o valor de juros"
+
+#: includes/configs/boleto.php:34
+msgid "Enter days for interest"
+msgstr "Insira os dias de juros"
+
+#: includes/configs/boleto.php:40
+msgid "Fine"
+msgstr "Multa"
+
+#: includes/configs/boleto.php:42
+msgid "Enter the format to fine"
+msgstr "Insira o formato da multa"
+
+#: includes/configs/boleto.php:50
+msgid "Enter value for fine"
+msgstr "Insira o valor para multa"
+
+#: includes/configs/boleto.php:55
+msgid "Enter days for fine"
+msgstr "Insira a quantidade de dias para multa"
+
+#: includes/poedit.php:3
+msgid "Credit"
+msgstr "Crédito"
+
+#: includes/poedit.php:4
+msgid "Invalid CVV"
+msgstr "O código de segurança não é válido"
+
+#: includes/poedit.php:5
+msgid "Enable Credit"
+msgstr "Habilitar Crédito"
+
+#: includes/poedit.php:6
+msgid "Enable Pix"
+msgstr "Habilitar Pix"
+
+#: includes/poedit.php:7
+msgid "Enable Boleto"
+msgstr "Habilitar Boleto"
+
+#: includes/poedit.php:8
+msgid "credit discount"
+msgstr "desconto Cartão de crédito"
+
+#: includes/poedit.php:9
+msgid "pix discount"
+msgstr "desconto Pix"
+
+#: includes/poedit.php:10
+msgid "boleto discount"
+msgstr "desconto Boleto"
+
+#: includes/poedit.php:11
+msgid "invalid_cvv"
+msgstr "o código de segurança não é válido"
+
+#: includes/poedit.php:12
+msgid "merchant_not_found"
+msgstr "comerciante não encontrado"
+
+#: includes/poedit.php:13
+msgid "payment_not_supported"
+msgstr "pagamento não suportado"
+
+#: includes/poedit.php:14
+msgid "provider_not_found"
+msgstr "provedor não encontrado"
+
+#: includes/poedit.php:15
+msgid "invalid_document"
+msgstr "documento inválido"
+
+#: includes/poedit.php:16
+msgid "unauthorized_adapter"
+msgstr "adaptador não autorizado"
+
+#: includes/poedit.php:17
+msgid "card_pending_validation"
+msgstr "o código de segurança é necessário para prosseguir"
+
+#: includes/poedit.php:18
+msgid "card_not_found"
+msgstr "cartão não encontrado"
+
+#: includes/poedit.php:19
+msgid "invalid_source_type"
+msgstr ""
+"a propriedade customer é obrigatória ser utilizada no 'source_type' para pix"
+
+#: includes/poedit.php:20
+msgid "invalid_card_number"
+msgstr "número do cartão não é válido"
+
+#: includes/poedit.php:21
+msgid "invalid_holder_name"
+msgstr "nome do portador do cartão não é válido"
+
+#: includes/poedit.php:22
+msgid "invalid_expiration_date"
+msgstr "data de expiração do cartão não é válida"
+
+#: includes/poedit.php:23
+msgid "invalid_card_cvv"
+msgstr "código de segurança não é válido"
+
+#: includes/poedit.php:24
+msgid "customer_not_found"
+msgstr "cliente não encontrado"
+
+#: includes/poedit.php:25
+msgid "customer_has_not_pre_authorized"
+msgstr "cobrança ainda não foi pré-autorizada ou já foi capturada"
+
+#: includes/poedit.php:26
+msgid "amount_cannot_be_greater_than_transaction"
+msgstr "valor não pode ser maior do que o valor da transação"
+
+#: includes/poedit.php:27
+msgid "refund_greater_than_transaction"
+msgstr "não é possível fazer um reembolso maior do que o valor do pagamento"
+
+#: includes/poedit.php:28
+msgid "charge_has_not_yet_canceled"
+msgstr "cobrança ainda não foi cancelada"
+
+#: includes/poedit.php:29
+msgid "charge_already_voided"
+msgstr "cobrança já anulada/cancelada"
+
+#: includes/poedit.php:30
+msgid "transaction_not_found"
+msgstr "transação não encontrada"
+
+#: includes/poedit.php:31
+msgid "transaction_has_not_pre_authorized"
+msgstr "transação não foi pré-autorizada"
+
+#: templates/notice/missing-clientId.php:2
+#: templates/notice/missing-merchant.php:2 templates/notice/missing-token.php:2
+msgid "Malga Disabled"
+msgstr "Malga desativado"
+
+#: templates/notice/missing-clientId.php:2
+msgid "You should inform your clientId."
+msgstr "Você deve informar seu clientId."
+
+#: templates/notice/missing-merchant.php:2
+msgid "You should inform your merchantId."
+msgstr "Você deve informar seu merchantId."
+
+#: templates/notice/missing-token.php:2
+msgid "You should inform your tokenId."
+msgstr "Você deve informar seu tokenId."
+
+#: templates/payment-types/credit.php:3
+msgid "Card Holder Name"
+msgstr "Nome do portador"
+
+#: templates/payment-types/credit.php:3
+msgid "as recorded on the card"
+msgstr "como impresso no cartão"
+
+#: templates/payment-types/credit.php:7
+msgid "Card Number"
+msgstr "Número do cartão"
+
+#: templates/payment-types/credit.php:12
+msgid "Expiry (MM/YYYY)"
+msgstr "Validade"
+
+#: templates/payment-types/credit.php:13
+msgid "MM / YYYY"
+msgstr ""
+
+#: templates/payment-types/credit.php:16
+msgid "Security Code"
+msgstr "Código de segurança"
+
+#: templates/payment-types/credit.php:17
+msgid "CVV"
+msgstr ""
+
+#: templates/payment-types/credit.php:21
+msgid "Installments"
+msgstr "Parcelas"
+
+#: templates/payment-types/credit.php:21
+#, php-format
+msgid "the minimum value of the installment is %s."
+msgstr "o valor mínimo da parcela é R$ %s."
+
+#~ msgid "Unauthorized!"
+#~ msgstr "Não autorizado!"

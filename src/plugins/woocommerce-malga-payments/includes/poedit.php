@@ -1,0 +1,31 @@
+<?php
+//This file is a dictionary for poedit
+_e( 'Credit', 'malga-payments-gateway' );
+_e( 'Invalid CVV', 'malga-payments-gateway' );
+_e( 'Enable Credit', 'malga-payments-gateway' );
+_e( 'Enable Pix', 'malga-payments-gateway' );
+_e( 'Enable Boleto', 'malga-payments-gateway' );
+_e( 'credit discount', 'malga-payments-gateway' );
+_e( 'pix discount', 'malga-payments-gateway' );
+_e( 'boleto discount', 'malga-payments-gateway' );
+_e( 'invalid_cvv', 'malga-payments-gateway' );
+_e( 'merchant_not_found', 'malga-payments-gateway' );
+_e( 'payment_not_supported', 'malga-payments-gateway' );
+_e( 'provider_not_found', 'malga-payments-gateway' );
+_e( 'invalid_document', 'malga-payments-gateway' );
+_e( 'unauthorized_adapter', 'malga-payments-gateway' );
+_e( 'card_pending_validation', 'malga-payments-gateway' ); 
+_e( 'card_not_found', 'malga-payments-gateway' );
+_e( 'invalid_source_type', 'malga-payments-gateway' );
+_e( 'invalid_card_number', 'malga-payments-gateway' );
+_e( 'invalid_holder_name', 'malga-payments-gateway' );
+_e( 'invalid_expiration_date', 'malga-payments-gateway' );
+_e( 'invalid_card_cvv', 'malga-payments-gateway' );
+_e( 'customer_not_found', 'malga-payments-gateway' );
+_e( 'customer_has_not_pre_authorized', 'malga-payments-gateway' );
+_e( 'amount_cannot_be_greater_than_transaction', 'malga-payments-gateway' );
+_e( 'refund_greater_than_transaction', 'malga-payments-gateway' );
+_e( 'charge_has_not_yet_canceled', 'malga-payments-gateway' );
+_e( 'charge_already_voided', 'malga-payments-gateway' );
+_e( 'transaction_not_found', 'malga-payments-gateway' );
+_e( 'transaction_has_not_pre_authorized', 'malga-payments-gateway' );
