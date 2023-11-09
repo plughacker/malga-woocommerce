@@ -1,12 +1,12 @@
 # Malga Pagamentos for WooCommerce #
 
-**Contributors:** MalgaTeam, Morais Junior
 **Tags:** woocommerce, malga, gateway, payment  
 **Requires at least:** 5.6  
 **Tested up to:** 5.8.3  
 **Stable tag:** 1.0.0  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
+**Contributors:** MalgaTeam, Morais Junior
 
 ## Description ##
 
