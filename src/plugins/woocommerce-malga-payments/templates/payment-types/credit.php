@@ -18,16 +18,45 @@
     </p>
     <div class="clear"></div>
     <p id="malgapayments-card-installments-field" class="form-row form-row-first">
-        <label for="malgapayments-card-installments"><?php _e( 'Installments', 'malga-payments-gateway' ); ?><span class="required">*</span><br /><small>(<?php echo sprintf(__( 'the minimum value of the installment is %s.', 'malga-payments-gateway' ), 'R$ '. esc_attr($minimum_installment) .',00'); ?>)</small></label>
+        <label for="malgapayments-card-installments">
+            <?php _e( 'Installments', 'malga-payments-gateway' ); ?><span class="required">*</span><br />
+            <?php
+                $minimum_value = $minimum_installment;
+                switch ($currency) {
+                    case 'USD':
+                        $minimum_value = '$'.number_format( $minimum_installment, 2, '.', ',' );
+                        break;
+                    case 'EUR':
+                        $minimum_value = '€'.number_format( $minimum_installment, 2, '.', ',' );
+                        break;
+                    default:
+                        $minimum_value = 'R$ '.number_format( $minimum_installment, 2, ',', '.' );
+                        break;
+                }
+            ?>
+            <small><?php echo sprintf(__( 'the minimum value of the installment is %s.', 'malga-payments-gateway' ), esc_attr($minimum_value)); ?></small>
+        </label>
         <select id="malgapayments-card-installments" name="malgapayments_card_installments" style="font-size: 1.5em; padding: 4px; width: 100%;">
             <?php 
                 $allowedHTML = ['option' => ['value' => []]];
                 $installments = ceil($cart_total / $minimum_installment); 
 
                 for ($i = 1; $i <= $installments; $i++) {
-                    if($i <= $maximum_installment){
-                        $installments_amount = number_format( ($cart_total / $i), 2, ',', '.' );
-                        echo wp_kses("<option value='$i'>$i x (R$ $installments_amount)</option>", $allowedHTML);
+                    if($i <= $maximum_installment){                        
+                        switch ($currency) {
+                            case 'USD':
+                                $installments_amount = number_format( ($cart_total / $i), 2, '.', ',' );
+                                echo wp_kses("<option value='$i'>$i x ($$installments_amount)</option>", $allowedHTML);
+                                break;
+                            case 'EUR':
+                                $installments_amount = number_format( ($cart_total / $i), 2, '.', ',' );
+                                echo wp_kses("<option value='$i'>$i x (€$installments_amount)</option>", $allowedHTML);
+                                break;
+                            default:
+                                $installments_amount = number_format( ($cart_total / $i), 2, ',', '.' );
+                                echo wp_kses("<option value='$i'>$i x (R$ $installments_amount)</option>", $allowedHTML);
+                                break;
+                        }
                     }
                 }
             ?>            

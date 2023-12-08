@@ -17,6 +17,7 @@ defined( 'ABSPATH' ) || exit;
 			<?php
 			wc_get_template(
 				"payment-types/$key.php", array(
+					'currency' 			   => $currency,
 					'cart_total'           => $cart_total,
 					'minimum_installment'  => $minimum_installment,
 					'maximum_installment'  => $maximum_installment,
