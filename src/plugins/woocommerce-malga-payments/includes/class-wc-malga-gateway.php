@@ -259,6 +259,7 @@ class WC_Malga_Gateway extends WC_Payment_Gateway {
 		wc_get_template(
 			'transparent-checkout-form.php', array(
 				'cart_total'         => $cart_total,
+				'currency'			 => $this->currency,
 				'minimum_installment'=> $this->minimum_installment,
 				'maximum_installment'=> $this->maximum_installment,
 				'allowedTypes'       => $this->allowedTypes,
