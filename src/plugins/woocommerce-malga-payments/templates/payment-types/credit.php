@@ -39,7 +39,7 @@
         <select id="malgapayments-card-installments" name="malgapayments_card_installments" style="font-size: 1.5em; padding: 4px; width: 100%;">
             <?php 
                 $allowedHTML = ['option' => ['value' => []]];
-                $installments = ceil($cart_total / $minimum_installment); 
+                $installments = floor($cart_total / $minimum_installment); 
 
                 for ($i = 1; $i <= $installments; $i++) {
                     if($i <= $maximum_installment){                        
