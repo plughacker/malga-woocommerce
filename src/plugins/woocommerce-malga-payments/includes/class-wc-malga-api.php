@@ -31,10 +31,12 @@ class WC_MalgaPayments_API {
 			$adapter->set_fraudanalysis($_POST, $order);
 		}
 
-        $payment_flow = apply_filters( 'malga_payment_flow', false, $order, $post );
+        $payment_flow = apply_filters( 'malga_payment_flow', false, $order, $_POST );
 		if( $payment_flow ){
 			$adapter->set_payment_flow($payment_flow);
 		}
+
+		$adapter->payload = apply_filters('malga_payload', $adapter->payload);
 
 		$return = $this->gateway->sdk->post_charge($adapter->payload);
 
