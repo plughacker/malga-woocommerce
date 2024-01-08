@@ -61,6 +61,43 @@ function example_metadata( $metadata, $order, $post  ) {
 add_filter( 'malga_payment_flow', 'example_metadata', 10, 3 );
 ```
 
+### Caso tenha que enviar dados adicionais do comprador
+
+Podemos vincular um comprador adicionando o seguinte filter
+
+```
+function example_payload( $payload  ) {
+	$response = wp_remote_post( 'https://api.malga.io/v1/customers', array(
+		'method'      => 'POST',
+		'timeout'     => 45,
+		'redirection' => 5,
+		'httpversion' => '1.0',
+		'blocking'    => true,
+		'headers'     => array(
+            'Content-Type' => 'application/json',
+            'X-Client-Id' => '*****',
+            'X-Api-Key' => '*****'
+        ),
+		'body' => '{
+			"name": "Customer test",
+			"email": "jose2@gmail.com",
+			"phoneNumber": "21 98889999099",
+			"document": {
+				"type": "noDocument"
+			}
+		}',
+		'data_format' => 'body',
+		)
+	);
+
+	$customer = json_decode($response['body'], true);
+
+	$payload["customerId"] = $customer['id'];
+
+	return $payload;
+} add_filter( 'malga_payload', 'example_payload', 10, 3 );
+```
+
 ## Testes ##
 
 Para rodar os testes unitários utilize o comando: php vendor/bin/phpunit dentro do containner do wordpress
