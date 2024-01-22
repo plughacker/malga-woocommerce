@@ -46,11 +46,6 @@ class Malga_Charges_Adapter {
             $document_number = $post['billing_cnpj'];
         }
 
-        if(empty($document_type))
-            $document_type = 'NoDocument'; 
-        else
-            $document_type = strtoupper($document_type); 
-
         $document_number = str_replace(array('.',',','-','/'), '', $document_number);
 
         return array($document_type, sanitize_text_field($document_number));
@@ -62,6 +57,11 @@ class Malga_Charges_Adapter {
         $district = sanitize_text_field($post['billing_neighborhood']);
         if(empty($district)){$district = sanitize_text_field($post['billing_address_2']);};
         if(empty($district)){$district = sanitize_text_field($post['billing_address_1']);};
+
+        if(empty($document_type))
+            $document_type = 'NoDocument'; 
+        else
+            $document_type = strtoupper($document_type); 
 
         if($this->payload['paymentSource']['sourceType'] == "card"){
             $this->payload['fraudAnalysis'] = [
