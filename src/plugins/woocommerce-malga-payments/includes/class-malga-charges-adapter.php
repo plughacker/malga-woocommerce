@@ -46,6 +46,11 @@ class Malga_Charges_Adapter {
             $document_number = $post['billing_cnpj'];
         }
 
+        if(empty($document_type))
+            $document_type = 'NoDocument'; 
+        else
+            $document_type = strtoupper($document_type); 
+
         $document_number = str_replace(array('.',',','-','/'), '', $document_number);
 
         return array($document_type, sanitize_text_field($document_number));
@@ -63,7 +68,7 @@ class Malga_Charges_Adapter {
                 "customer"=> [
                     "name"=> sanitize_text_field($post['billing_first_name'] . ' ' . $post['billing_last_name']),
                     "identity"=> $document_number,
-                    "identityType"=> strtoupper($document_type),
+                    "identityType"=> $document_type,
                     "email"=> sanitize_email($post['billing_email']),
                     "phone"=> sanitize_text_field($post['billing_phone']),
                     "billingAddress"=> [
