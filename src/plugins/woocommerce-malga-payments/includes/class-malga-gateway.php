@@ -1,7 +1,7 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
-class WC_Malga_Gateway extends WC_Payment_Gateway {
+class Malga_Gateway extends WC_Payment_Gateway {
 	public function __construct() {
 		$this->id                 = 'malgapayments';
 		$this->icon               = apply_filters( 'woocommerce_malgapayments_icon', plugins_url( 'assets/images/poweredbymalga.png', plugin_dir_path( __FILE__ ) ) );
@@ -30,13 +30,13 @@ class WC_Malga_Gateway extends WC_Payment_Gateway {
 		$this->allowedTypes        = $this->get_allowedTypes();
 		$this->titleOfTypes        = [];
 		$this->feeOfTypes        = [];
-		foreach(WC_MALGAPAYMENTS_PAYMENTS_TYPES as $key => $label){
+		foreach(MALGAPAYMENTS_PAYMENTS_TYPES as $key => $label){
 			$this->titleOfTypes[$key] = $this->get_option( "title_$key", $label ); 
 			$this->feeOfTypes[$key] = $this->get_option( "fee_$key", '0' ); 
 		}
 
 		$this->sdk = new Malga_Payments_SDK( $this->clientId, $this->tokenId, ( 'yes' == $this->sandbox ) );	
-		$this->api = new WC_MalgaPayments_API( $this );
+		$this->api = new Malga_API( $this );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'checkout_scripts' ) );
 		add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
@@ -154,7 +154,7 @@ class WC_Malga_Gateway extends WC_Payment_Gateway {
 			'currency' => array(
 				'title'       => __( 'Currency', 'malga-payments-gateway' ),
 				'type'        => 'text',
-				'description' => sprintf(__( 'Currency identifier for billing processing, ISO 4217 format', 'malga-payments-gateway' )),
+				'description' => __( 'Currency identifier for billing processing, ISO 4217 format', 'malga-payments-gateway' ),
 				'default'     => 'BRL',
 			),	
 			'transparent_checkout' => array(
@@ -164,17 +164,17 @@ class WC_Malga_Gateway extends WC_Payment_Gateway {
 			),			
 		);
 		
-		foreach(WC_MALGAPAYMENTS_PAYMENTS_TYPES as $key => $label){
+		foreach(MALGAPAYMENTS_PAYMENTS_TYPES as $key => $label){
 			$this->form_fields["allow_$key"] = array(
-				'title'   => __( $label, 'malga-payments-gateway' ),
+				'title'   => sprintf(esc_html__( '%s', 'malga-payments-gateway' ), esc_html($label)),
 				'type'    => 'checkbox',
-				'label'   => __( "Enable $label", 'malga-payments-gateway' ),
+				'label'   => sprintf(esc_html__( "Enable %s", 'malga-payments-gateway' ), esc_html($label)),
 				'default' => 'yes',
 			);
 			$this->form_fields["title_$key"] = array(
 				'type'    => 'text',
-				'default' => __( $label, 'malga-payments-gateway' ),
-				'description' => __( 'Please enter your title of payment type', 'malga-payments-gateway' ),
+				'default' => sprintf(esc_html__( '%s', 'malga-payments-gateway' ), esc_html($label)),
+				'description' => esc_html__( 'Please enter your title of payment type', 'malga-payments-gateway' ),
 				'desc_tip'    => false,				
 			);			
 			$this->form_fields["fee_$key"] = array(
@@ -185,10 +185,10 @@ class WC_Malga_Gateway extends WC_Payment_Gateway {
 			);			
 		}	
 
-		foreach(WC_MALGAPAYMENTS_PAYMENTS_TYPES as $key => $label){
+		foreach(MALGAPAYMENTS_PAYMENTS_TYPES as $key => $label){
 			if(file_exists(dirname( __FILE__ ) . "/configs/$key.php")){	
 				$this->form_fields[$key] = array(
-					'title'       => __( "$label Options", 'malga-payments-gateway' ),
+					'title'       => sprintf(esc_html__(  "%s Options", 'malga-payments-gateway' ), esc_html($label)),
 					'type'        => 'title',
 					'description' => '',
 				);						
@@ -201,7 +201,7 @@ class WC_Malga_Gateway extends WC_Payment_Gateway {
 		if(!$data || $_GET['secret'] != $this->webhook_secret){
 			wp_die( esc_html__( 'Malga Request Unauthorized', 'malga-payments-gateway' ), esc_html__( 'Malga Request Unauthorized', 'malga-payments-gateway' ), array( 'response' => 401 ) );
 		}else{
-			header( 'HTTP/1.1 200 OK' );
+			header( 'HTTP/1.1 200 OK' );exit();
 		}
 	}
 
@@ -223,14 +223,14 @@ class WC_Malga_Gateway extends WC_Payment_Gateway {
 	public function checkout_scripts() {
 		if ( is_checkout() && $this->is_available() ) {
 			if ( ! get_query_var( 'order-received' ) ) {
-				wp_enqueue_style( 'malgapayments-checkout', plugins_url( 'assets/css/transparent-checkout.css', plugin_dir_path( __FILE__ ) ), array(), WC_MALGAPAYMENTS_VERSION );
-				wp_enqueue_script( 'malgapayments-checkout', plugins_url( 'assets/js/transparent-checkout.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WC_MALGAPAYMENTS_VERSION, true );
+				wp_enqueue_style( 'malgapayments-checkout', plugins_url( 'assets/css/transparent-checkout.css', plugin_dir_path( __FILE__ ) ), array(), MALGAPAYMENTS_VERSION );
+				wp_enqueue_script( 'malgapayments-checkout', plugins_url( 'assets/js/transparent-checkout.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), MALGAPAYMENTS_VERSION, true );
 			}
 		}
 	}
 
 	public function admin_options() {
-		include WC_Malga_Payments::get_templates_path() . 'admin-page.php';
+		include Malga_Payments::get_templates_path() . 'admin-page.php';
 	}
 
 	public function is_available() {
@@ -239,7 +239,7 @@ class WC_Malga_Gateway extends WC_Payment_Gateway {
 						'' !== $this->get_tokenId() && 
 						(NULL !== $this->get_merchantId() || empty($this->get_merchantId())));
 
-		if (in_array(WC_MALGAPAYMENTS_BR_TYPES, $this->allowedTypes) && ! class_exists( 'Extra_Checkout_Fields_For_Brazil' ) ) {
+		if (in_array(MALGAPAYMENTS_BR_TYPES, $this->allowedTypes) && ! class_exists( 'Extra_Checkout_Fields_For_Brazil' ) ) {
 			$available = false;
 		}
 
@@ -264,16 +264,16 @@ class WC_Malga_Gateway extends WC_Payment_Gateway {
 				'maximum_installment'=> $this->maximum_installment,
 				'allowedTypes'       => $this->allowedTypes,
 				'titleOfTypes'       => $this->titleOfTypes,
-			), 'woocommerce/malgapayments/', WC_MALGA_Payments::get_templates_path()
+			), 'woocommerce/malgapayments/', MALGA_Payments::get_templates_path()
 		);
 	}	
 
 	public function get_allowedTypes($onlyBR = false) {
 		$allowedTypes = array();
-		foreach(WC_MALGAPAYMENTS_PAYMENTS_TYPES as $key => $label){
+		foreach(MALGAPAYMENTS_PAYMENTS_TYPES as $key => $label){
 			if($this->get_option( "allow_$key", 'yes' ) == 'yes'){
 				if($onlyBR){
-					if(in_array($key, array_keys(WC_MALGAPAYMENTS_BR_TYPES))){						
+					if(in_array($key, array_keys(MALGAPAYMENTS_BR_TYPES))){						
 						$allowedTypes[] = $key;
 					}
 				}else{
@@ -351,7 +351,7 @@ class WC_Malga_Gateway extends WC_Payment_Gateway {
 		if(!empty($fees)){
 			foreach($this->feeOfTypes as $key => $value){
 				foreach ($fees as $key => $fee) {
-					if($fees[$key]->name === __( $key . " discount" )) {
+					if($fees[$key]->name === sprintf(esc_html__( $key . " discount" ), esc_html($key)) ) {
 						unset($fees[$key]);
 					}
 				}
@@ -403,7 +403,7 @@ class WC_Malga_Gateway extends WC_Payment_Gateway {
 				);	
 			}else{	
 				foreach ( $response['error'] as $error ) {
-					wc_add_notice( __($error, 'malga-payments-gateway' ), 'error' );
+					wc_add_notice(  sprintf(esc_html__('%', 'malga-payments-gateway' ), esc_html($error)), 'error' );
 				}
 
 				return array(
@@ -419,7 +419,7 @@ class WC_Malga_Gateway extends WC_Payment_Gateway {
 			}
 			
 			foreach ( $response['error'] as $error ) {
-				wc_add_notice( __($error, 'malga-payments-gateway' ), 'error' );
+				wc_add_notice(  sprintf(esc_html__('%s', 'malga-payments-gateway' ), esc_html($error)), 'error' );
 			}
 	
 			return array(
@@ -439,7 +439,7 @@ class WC_Malga_Gateway extends WC_Payment_Gateway {
 		wc_get_template(
 			"receipt/$paymentType.php", array(
 				'payment_data'         => $paymentData,
-			), 'woocommerce/malgapayments/', WC_Malga_Payments::get_templates_path()
+			), 'woocommerce/malgapayments/', Malga_Payments::get_templates_path()
 		);
 	}
 }
