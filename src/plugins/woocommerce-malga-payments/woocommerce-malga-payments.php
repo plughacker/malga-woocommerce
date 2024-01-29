@@ -5,11 +5,11 @@
  * Description: Take credit card payments on your store using Malga.
  * Author: Malga Team
  * Author URI: https://www.malga.io/
- * Version: 1.4.0
+ * Version: 1.0.0
  * Requires at least: 5.6
- * Tested up to: 5.9
+ * Tested up to: 6.4
  * WC requires at least: 3.3
- * WC tested up to: 5.8.3
+ * WC tested up to: 8.5.1
  * Text Domain: malga-payments-gateway
  * Domain Path: /languages/
  */
@@ -17,17 +17,17 @@
 defined( 'ABSPATH' ) || exit;
 
 // Plugin constants.
-define( 'WC_MALGAPAYMENTS_VERSION', '1.3.0' );
-define( 'WC_MALGAPAYMENTS_PLUGIN_FILE', __FILE__ );
+define( 'MALGAPAYMENTS_VERSION', '1.0.0' );
+define( 'MALGAPAYMENTS_PLUGIN_FILE', __FILE__ );
 require_once dirname( __FILE__ ) . '/includes/constants/payments-types.php';
 
-class WC_Malga_Payments {
+class Malga_Payments {
 	public static function init() {				
 		// Checks with WooCommerce is installed.
 		if ( class_exists( 'WC_Payment_Gateway' ) ) {
 			require_once dirname( __FILE__ ) . '/sdk/malga-payments.php';
-			require_once dirname( __FILE__ ) . '/includes/class-wc-malga-api.php';
-			require_once dirname( __FILE__ ) . '/includes/class-wc-malga-gateway.php';
+			require_once dirname( __FILE__ ) . '/includes/class-malga-api.php';
+			require_once dirname( __FILE__ ) . '/includes/class-malga-gateway.php';
 			require_once dirname( __FILE__ ) . '/includes/class-malga-charges-adapter.php';
 
 			add_filter( 'woocommerce_payment_gateways', array( __CLASS__, 'add_gateway' ) );
@@ -41,13 +41,13 @@ class WC_Malga_Payments {
 	}
 
 	public static function add_gateway( $methods ) {
-		$methods[] = 'WC_Malga_Gateway';
+		$methods[] = 'Malga_Gateway';
 
 		return $methods;
 	}	
 	
 	public static function get_templates_path() {
-		return plugin_dir_path( WC_MALGAPAYMENTS_PLUGIN_FILE ) . 'templates/';
+		return plugin_dir_path( MALGAPAYMENTS_PLUGIN_FILE ) . 'templates/';
 	}	
 
 	public static function load_plugin_textdomain() {
@@ -55,5 +55,5 @@ class WC_Malga_Payments {
 	}	
 }   
 
-add_action( 'plugins_loaded', array( 'WC_Malga_Payments', 'init' ) );
-add_action( 'plugins_loaded', array( 'WC_Malga_Payments', 'load_plugin_textdomain' ) );
+add_action( 'plugins_loaded', array( 'Malga_Payments', 'init' ) );
+add_action( 'plugins_loaded', array( 'Malga_Payments', 'load_plugin_textdomain' ) );

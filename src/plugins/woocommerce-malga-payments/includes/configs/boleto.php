@@ -1,4 +1,6 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 $this->form_fields["boleto_expires"] = array(
     'title'       => __( 'Expires days', 'malga-payments-gateway' ),
     'type'        => 'number',

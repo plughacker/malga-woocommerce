@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $is_installed = false;
 
 if ( function_exists( 'get_plugins' ) ) {

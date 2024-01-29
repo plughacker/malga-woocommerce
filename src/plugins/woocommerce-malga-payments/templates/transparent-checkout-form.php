@@ -11,7 +11,8 @@ defined( 'ABSPATH' ) || exit;
 				<input type="radio" name="paymentType" value="<?php echo esc_attr($key); ?>">
 				<?php 
 					$allowedHTML = ['span' => ['style' => []]];
-					wp_kses(_e( $titleOfTypes[$key], 'malga-payments-gateway' ), $allowedHTML);
+
+					wp_kses(sprintf(esc_html_e( '%s', 'malga-payments-gateway' ), $titleOfTypes[$key]), $allowedHTML);
 				?>
 			</label>
 			<?php

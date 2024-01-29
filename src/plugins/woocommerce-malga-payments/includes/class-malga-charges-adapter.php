@@ -58,12 +58,17 @@ class Malga_Charges_Adapter {
         if(empty($district)){$district = sanitize_text_field($post['billing_address_2']);};
         if(empty($district)){$district = sanitize_text_field($post['billing_address_1']);};
 
+        if(empty($document_type))
+            $document_type = 'NoDocument'; 
+        else
+            $document_type = strtoupper($document_type); 
+
         if($this->payload['paymentSource']['sourceType'] == "card"){
             $this->payload['fraudAnalysis'] = [
                 "customer"=> [
                     "name"=> sanitize_text_field($post['billing_first_name'] . ' ' . $post['billing_last_name']),
                     "identity"=> $document_number,
-                    "identityType"=> strtoupper($document_type),
+                    "identityType"=> $document_type,
                     "email"=> sanitize_email($post['billing_email']),
                     "phone"=> sanitize_text_field($post['billing_phone']),
                     "billingAddress"=> [

@@ -1,7 +1,7 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
-class WC_MalgaPayments_API {
+class Malga_API {
 	public $gateway;
 
 	public function __construct( $gateway = null ) {
@@ -51,7 +51,7 @@ class WC_MalgaPayments_API {
 			$errors = array();
 			if(isset($return['transactionRequests'][0]['providerError'])){
 				$error = $return['transactionRequests'][0]['providerError']['networkDeniedMessage'];
-				$errors[] = __($error, 'malga-payments-gateway' );
+				$errors[] = sprintf(esc_html__('%s', 'malga-payments-gateway' ), esc_html($error));
 			}
 
 			return array(
@@ -63,13 +63,13 @@ class WC_MalgaPayments_API {
 
 		if (isset($return['error'])) {
 			$errors = array();
-			if(isset($return['error']['message'])){
-				$errors[] = __($return['error']['message'], 'malga-payments-gateway' );
+			if(isset($return['error']['message'])){				
+				$errors[] = sprintf(esc_html__('%s', 'malga-payments-gateway' ), esc_html($return['error']['message']));
 			}
 
 			if(isset($return['error']['details'])){
 				foreach($return['error']['details'] as $error){
-					$errors[] = __($error, 'malga-payments-gateway' );
+					$errors[] = sprintf(esc_html__('%s', 'malga-payments-gateway' ), esc_html($error));
 				}
 			}
 

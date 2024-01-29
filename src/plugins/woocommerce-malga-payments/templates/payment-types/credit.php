@@ -1,25 +1,27 @@
+<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
+
 <div id="malgapayments-credit-form" class="malgapayments-method-form">     
     <p id="malgapayments-card-holder-name-field" class="form-row form-row-first">
-        <label for="malgapayments-card-holder-name"><?php _e( 'Card Holder Name', 'malga-payments-gateway' ); ?> <small>(<?php _e( 'as recorded on the card', 'malga-payments-gateway' ); ?>)</small> <span class="required">*</span></label>
+        <label for="malgapayments-card-holder-name"><?php esc_html_e( 'Card Holder Name', 'malga-payments-gateway' ); ?> <small>(<?php esc_html_e( 'as recorded on the card', 'malga-payments-gateway' ); ?>)</small> <span class="required">*</span></label>
         <input id="malgapayments-card-holder-name" name="malgapayments_card_holder_name" class="input-text" type="text" autocomplete="off" style="font-size: 1.5em; padding: 8px;" />
     </p>
     <p id="malgapayments-card-number-field" class="form-row form-row-last">
-        <label for="malgapayments-card-number"><?php _e( 'Card Number', 'malga-payments-gateway' ); ?> <span class="required">*</span></label>
+        <label for="malgapayments-card-number"><?php esc_html_e( 'Card Number', 'malga-payments-gateway' ); ?> <span class="required">*</span></label>
         <input id="malgapayments-card-number" name="malgapayments_card_number" class="input-text wc-credit-card-form-card-number" type="tel" maxlength="20" autocomplete="off" placeholder="&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull;" style="font-size: 1.5em; padding: 8px;" />
     </p>
     <div class="clear"></div>
     <p id="malgapayments-card-expiry-field" class="form-row form-row-first">
-        <label for="malgapayments-card-expiry"><?php _e( 'Expiry (MM/YYYY)', 'malga-payments-gateway' ); ?> <span class="required">*</span></label>
-        <input id="malgapayments-card-expiry" name="malgapayments_card_expiry" class="input-text wc-credit-card-form-card-expiry" type="tel" autocomplete="off" placeholder="<?php _e( 'MM / YYYY', 'malga-payments-gateway' ); ?>" style="font-size: 1.5em; padding: 8px;" />
+        <label for="malgapayments-card-expiry"><?php esc_html_e( 'Expiry (MM/YYYY)', 'malga-payments-gateway' ); ?> <span class="required">*</span></label>
+        <input id="malgapayments-card-expiry" name="malgapayments_card_expiry" class="input-text wc-credit-card-form-card-expiry" type="tel" autocomplete="off" placeholder="<?php esc_html_e( 'MM / YYYY', 'malga-payments-gateway' ); ?>" style="font-size: 1.5em; padding: 8px;" />
     </p>
     <p id="malgapayments-card-cvc-field" class="form-row form-row-last">
-        <label for="malgapayments-card-cvc"><?php _e( 'Security Code', 'malga-payments-gateway' ); ?> <span class="required">*</span></label>
-        <input id="malgapayments-card-cvc" name="malgapayments_card_cvv" class="input-text wc-credit-card-form-card-cvv" type="tel" autocomplete="off" placeholder="<?php _e( 'CVV', 'malga-payments-gateway' ); ?>" style="font-size: 1.5em; padding: 8px;" />
+        <label for="malgapayments-card-cvc"><?php esc_html_e( 'Security Code', 'malga-payments-gateway' ); ?> <span class="required">*</span></label>
+        <input id="malgapayments-card-cvc" name="malgapayments_card_cvv" class="input-text wc-credit-card-form-card-cvv" type="tel" autocomplete="off" placeholder="<?php esc_html_e( 'CVV', 'malga-payments-gateway' ); ?>" style="font-size: 1.5em; padding: 8px;" />
     </p>
     <div class="clear"></div>
     <p id="malgapayments-card-installments-field" class="form-row form-row-first">
         <label for="malgapayments-card-installments">
-            <?php _e( 'Installments', 'malga-payments-gateway' ); ?><span class="required">*</span><br />
+            <?php esc_html_e( 'Installments', 'malga-payments-gateway' ); ?><span class="required">*</span><br />
             <?php
                 $minimum_value = $minimum_installment;
                 switch ($currency) {
