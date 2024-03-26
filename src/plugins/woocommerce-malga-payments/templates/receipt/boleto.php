@@ -1,3 +1,4 @@
+<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 
 <h2>Boleto disponível para pagamento!</h2>
 <div class="order_details" style="padding: 20px;position: relative;">
