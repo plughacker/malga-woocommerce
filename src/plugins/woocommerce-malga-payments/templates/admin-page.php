@@ -1,3 +1,5 @@
+<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
+
 <h3><?php echo esc_html( $this->method_title ); ?></h3>
 
 <?php
