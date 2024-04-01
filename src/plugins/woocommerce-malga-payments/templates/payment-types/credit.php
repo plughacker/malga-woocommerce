@@ -36,7 +36,7 @@
                         break;
                 }
             ?>
-            <small><?php echo sprintf(__( 'the minimum value of the installment is %s.', 'malga-payments-gateway' ), esc_attr($minimum_value)); ?></small>
+            <small><?php echo esc_html(sprintf(__( 'the minimum value of the installment is %s.', 'malga-payments-gateway' ), esc_attr($minimum_value))); ?></small>
         </label>
         <select id="malgapayments-card-installments" name="malgapayments_card_installments" style="font-size: 1.5em; padding: 4px; width: 100%;">
             <?php 
