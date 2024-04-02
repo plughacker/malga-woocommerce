@@ -12,8 +12,8 @@ class Malga_API {
 		return intval(str_replace(array(' ', ',', '.'), '', $value));
 	}
 
-    public function payment_request( $order, $posted ) {
-		$payment_method = isset( $posted['paymentType'] ) ? $posted['paymentType'] : '';
+    public function payment_request( $order ) {
+		$payment_method = isset( $_POST['paymentType'] ) ? $_POST['paymentType'] : '';
 
 		if ( ! in_array( $payment_method, $this->gateway->allowedTypes ) ) {
 			return array(
@@ -23,12 +23,12 @@ class Malga_API {
 			);
 		}	
 
-		$adapter = new Malga_Charges_Adapter( $this, $order, $_POST);
+		$adapter = new Malga_Charges_Adapter( $this, $order);
 
 		call_user_func_array(array($adapter, 'to_' . $payment_method), array($_POST));
 
 		if( 'yes' == $this->gateway->fraudanalysis ){
-			$adapter->set_fraudanalysis($_POST, $order);
+			$adapter->set_fraudanalysis($order);
 		}
 
         $payment_flow = apply_filters( 'malga_payment_flow', false, $order, $_POST );
