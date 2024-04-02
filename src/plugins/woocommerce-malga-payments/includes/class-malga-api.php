@@ -25,13 +25,13 @@ class Malga_API {
 
 		$adapter = new Malga_Charges_Adapter( $this, $order);
 
-		call_user_func_array(array($adapter, 'to_' . $payment_method), array($_POST));
+		call_user_func_array(array($adapter, 'to_' . $payment_method), array());
 
 		if( 'yes' == $this->gateway->fraudanalysis ){
 			$adapter->set_fraudanalysis($order);
 		}
 
-        $payment_flow = apply_filters( 'malga_payment_flow', false, $order, $_POST );
+        $payment_flow = apply_filters( 'malga_payment_flow', false, $order );
 		if( $payment_flow ){
 			$adapter->set_payment_flow($payment_flow);
 		}

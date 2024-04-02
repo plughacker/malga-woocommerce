@@ -24,7 +24,7 @@ class Malga_Charges_Adapter {
                 ],
                 "device" => [
                    "name" => "browser",
-                   "version" => $_SERVER['HTTP_USER_AGENT']
+                   "version" => sanitize_text_field($_SERVER['HTTP_USER_AGENT'])
                 ],
                 "system" => [
                    "name" => "woocommerce",

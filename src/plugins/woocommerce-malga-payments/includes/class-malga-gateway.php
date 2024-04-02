@@ -360,7 +360,7 @@ class Malga_Gateway extends WC_Payment_Gateway {
 			$order->set_fees($fees);
 		}
 
-		$fee = $this->feeOfTypes[$_POST['paymentType']];
+		$fee = $this->feeOfTypes[sanitize_text_field($_POST['paymentType'])];
 		if( is_numeric($fee) && $fee != '0' ){
 			$subtotal = $order->get_subtotal();
 			$percentage = intval($fee);
@@ -368,7 +368,7 @@ class Malga_Gateway extends WC_Payment_Gateway {
 			$discount   = $percentage * $subtotal / 100;			
 
 			$fee = new WC_Order_Item_Fee();
-			$fee->set_name( $_POST['paymentType'] . " discount" );
+			$fee->set_name( sanitize_text_field($_POST['paymentType']) . " discount" );
 			$fee->set_amount($discount);
 			$fee->set_total($discount);			
 			$fee->set_tax_class('');
