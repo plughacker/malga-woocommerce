@@ -210,7 +210,7 @@ class Malga_Gateway extends WC_Payment_Gateway {
 		$isOrderIdDefined = isset($_POST['data']['orderId']);
 
 		if (isTransactionDefined && isOrderIdDefined){
-			$order = wc_get_order($_POST['data']['orderId'])
+			$order = wc_get_order($_POST['data']['orderId']);
 			$payment = $_POST['data'];
 
 			if (isset($order) && isset($payment)) {
