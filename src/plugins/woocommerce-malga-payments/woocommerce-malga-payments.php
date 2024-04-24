@@ -5,6 +5,8 @@
  * Description: Take credit card payments on your store using Malga.
  * Author: Malga Team
  * Author URI: https://www.malga.io/
+ * License: GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Version: 1.0.0
  * Requires at least: 5.6
  * Tested up to: 6.4
