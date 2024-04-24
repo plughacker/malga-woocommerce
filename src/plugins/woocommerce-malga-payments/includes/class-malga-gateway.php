@@ -352,7 +352,7 @@ class Malga_Gateway extends WC_Payment_Gateway {
 		if(!empty($fees)){
 			foreach($this->feeOfTypes as $key => $value){
 				foreach ($fees as $key => $fee) {
-					if($fees[$key]->name === sprintf(esc_html__( $key . " discount" ), esc_html($key)) ) {
+					if($fees[$key]->name === sprintf(esc_html__('Discount for %s', 'plugin-slug'), esc_html($key)) ) {
 						unset($fees[$key]);
 					}
 				}
