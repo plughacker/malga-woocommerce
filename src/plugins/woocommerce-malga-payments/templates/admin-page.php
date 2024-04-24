@@ -26,6 +26,4 @@
 	<?php $this->generate_settings_html(); ?>
 </table>
 
-<!-- 
-    plugin_locale: <?php echo apply_filters( 'plugin_locale', determine_locale(), 'malga-payments-gateway' ); ?>
--->
+<?php echo esc_html(apply_filters( 'plugin_locale', determine_locale(), 'malga-payments-gateway' )); ?>
