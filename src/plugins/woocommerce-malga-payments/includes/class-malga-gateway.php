@@ -205,18 +205,19 @@ class Malga_Gateway extends WC_Payment_Gateway {
 		}
 	}
 
-	public function ipn_handler() {	
-		$data = json_decode(file_get_contents('php://input'), true);
-		$this->ipn_validate($data);
+	public function ipn_handler() {
+		$isTransactionDefined = isset($_POST['data']) && $_POST['data'] == 'transaction';
+		$isOrderIdDefined = isset($_POST['data']['orderId']);
 
-		if($data['object'] == 'transaction'){
-			$payment = $data['data'];
-			$order = wc_get_order( $data['data']['orderId'] );
-			if($order && $payment){
-				$this->update_order_status( $order, $payment );
-				$this->save_payment_meta_data( $order, $payment );					
+		if (isTransactionDefined && isOrderIdDefined){
+			$order = wc_get_order($_POST['data']['orderId']);
+			$payment = $_POST['data'];
+
+			if (isset($order) && isset($payment)) {
+				$this->update_order_status($order, $payment);
+				$this->save_payment_meta_data($order, $payment);					
 			}
-		}
+		}		
 		exit;
 	}
 
@@ -359,7 +360,7 @@ class Malga_Gateway extends WC_Payment_Gateway {
 			$order->set_fees($fees);
 		}
 
-		$fee = $this->feeOfTypes[$_POST['paymentType']];
+		$fee = $this->feeOfTypes[sanitize_text_field($_POST['paymentType'])];
 		if( is_numeric($fee) && $fee != '0' ){
 			$subtotal = $order->get_subtotal();
 			$percentage = intval($fee);
@@ -367,7 +368,7 @@ class Malga_Gateway extends WC_Payment_Gateway {
 			$discount   = $percentage * $subtotal / 100;			
 
 			$fee = new WC_Order_Item_Fee();
-			$fee->set_name( $_POST['paymentType'] . " discount" );
+			$fee->set_name( sanitize_text_field($_POST['paymentType']) . " discount" );
 			$fee->set_amount($discount);
 			$fee->set_total($discount);			
 			$fee->set_tax_class('');
@@ -383,7 +384,7 @@ class Malga_Gateway extends WC_Payment_Gateway {
 		$order = wc_get_order( $order_id );	
 		$this->set_fees( $order ); 
 
-		$response = $this->api->payment_request( $order, $_POST );	
+		$response = $this->api->payment_request( $order );	
 		if ( !empty($response['data']) ) {
 			$this->update_order_status( $order, $response['data'] );
 			$this->save_payment_meta_data( $order, $response['data'] );

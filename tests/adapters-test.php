@@ -20,8 +20,9 @@ class AdaptersTest extends TestCase{
   public function testCredit(){
     $input = json_decode( file_get_contents("tests/payloads/credit/input.json"), true);
     $output = json_decode( file_get_contents("tests/payloads/credit/output.json"), true);
+    $_POST = $input;
 
-    $adapter = new Malga_Charges_Adapter( new MockAPI(), new MockOrder(), $input);
+    $adapter = new Malga_Charges_Adapter( new MockAPI(), new MockOrder());
 
     $adapter->to_credit($input);
 
@@ -34,8 +35,9 @@ class AdaptersTest extends TestCase{
   public function testPix(){
     $input = json_decode( file_get_contents("tests/payloads/pix/input.json"), true);
     $output = json_decode( file_get_contents("tests/payloads/pix/output.json"), true);
+    $_POST = $input;
 
-    $adapter = new Malga_Charges_Adapter( new MockAPI(), new MockOrder(), $input);
+    $adapter = new Malga_Charges_Adapter( new MockAPI(), new MockOrder());
 
     $adapter->to_pix($input);
 
@@ -48,10 +50,11 @@ class AdaptersTest extends TestCase{
   public function testBoleto(){    
     $input = json_decode( file_get_contents("tests/payloads/boleto/input.json"), true);
     $output = json_decode( file_get_contents("tests/payloads/boleto/output.json"), true);
-    
-    $output['paymentMethod']['expiresDate'] = date('Y-m-d', strtotime('+5 days'));
+    $_POST = $input;
 
-    $adapter = new Malga_Charges_Adapter( new MockAPI(), new MockOrder(), $input);
+    $output['paymentMethod']['expiresDate'] = date('Y-m-d', strtotime('+5 days'));
+   
+    $adapter = new Malga_Charges_Adapter( new MockAPI(), new MockOrder());
 
     $adapter->to_boleto($input);
 
