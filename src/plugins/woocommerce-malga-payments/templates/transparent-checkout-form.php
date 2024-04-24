@@ -22,7 +22,7 @@ defined( 'ABSPATH' ) || exit;
 					'cart_total'           => $cart_total,
 					'minimum_installment'  => $minimum_installment,
 					'maximum_installment'  => $maximum_installment,
-				), 'woocommerce/malgapayments/', WC_Malga_Payments::get_templates_path()
+				), 'woocommerce/malgapayments/', Malga_Payments::get_templates_path()
 			);		
 			?>
 		<?php } ?>
