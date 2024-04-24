@@ -5,7 +5,7 @@ defined( 'ABSPATH' ) || exit;
 <fieldset id="malgapayments-payment-form">
 	<style>.malgapayments-method-form{display: none;}</style>
 
-	<?php foreach(WC_MALGAPAYMENTS_PAYMENTS_TYPES as $key => $label){ ?>
+	<?php foreach(MALGAPAYMENTS_PAYMENTS_TYPES as $key => $label){ ?>
 		<?php if (in_array($key, $allowedTypes)){ ?>
 			<label>
 				<input type="radio" name="paymentType" value="<?php echo esc_attr($key); ?>">
